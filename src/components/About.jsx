@@ -1,9 +1,13 @@
 import React from "react";
+import "./About.css"; // Yeni bir CSS dosyası
 
 const About = ({ onClose }) => {
   return (
-    <div className="about-overlay">
-      <div className="about-content">
+    <div className="about-overlay" onClick={onClose}>
+      <div
+        className="about-content"
+        onClick={(e) => e.stopPropagation()} // İçeriğe tıklayınca kapanmasın
+      >
         <h2>Hakkında</h2>
         <p>
           Bu uygulama, gerçek zamanlı hava durumu bilgisi sunmak için OpenWeatherMap API'sini kullanır. 

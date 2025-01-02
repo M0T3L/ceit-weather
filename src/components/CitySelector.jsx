@@ -54,13 +54,16 @@ const CitySelector = ({ onCitySelect }) => {
       {suggestions.length > 0 && (
         <ul className="suggestions-list">
           {suggestions.map((city, index) => (
-            <li
-              key={index}
-              onClick={() => handleSuggestionClick(city)}
-              className="suggestion-item"
-            >
-              {city.name}, {city.country}
-            </li>
+<li
+  key={index}
+  onClick={() => handleSuggestionClick(city)}
+  className="suggestion-item"
+  onMouseEnter={(e) => e.target.classList.add("highlight")}
+  onMouseLeave={(e) => e.target.classList.remove("highlight")}
+>
+  {city.name}, {city.country}
+</li>
+
           ))}
         </ul>
       )}
