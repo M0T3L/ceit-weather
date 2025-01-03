@@ -29,16 +29,17 @@ body {
 }
 
 .city-info p {
-  font-size: 48px;
+  font-size: 36px;
   margin: 5px 0 0;
   color: white; /* Metin rengi beyaz */
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5); /* Siyah gölge */
   font-family: 'Lato', sans-serif;
   font-weight: 400; /* Light ağırlık */
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
+
 .city-info {
-	  position: absolute;
+  position: absolute;
   top: 20px; /* Üst kenara dayalı */
   left: 50%; /* Yatayda ortalama */
   transform: translateX(-50%); /* Yatay ortalama ayarı */
@@ -52,7 +53,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 .search-bar {
   position: fixed;
   bottom: 0;
@@ -63,30 +63,29 @@ body {
   padding: 10px 20px;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
+  align-items: center; /* Elemanları dikey olarak ortalar */
+  justify-content: space-between; /* Sağ ve sol elemanları ayırır */
   border-radius: 10px;
   color: white; /* Metin rengi beyaz */
-  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5); /* Siyah g_lge */
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5); /* Siyah gölge */
   font-family: 'Lato', sans-serif;
-  font-weight: 400; /* Light a__rl_k */
+  font-weight: 400; /* Light ağırlık */
   letter-spacing: -1px;
 }
 
 .about-btn {
-  position: fixed;
-  bottom: 20px; /* Sağ alt köşe için alt mesafe */
-  right: 20px; /* Sağ alt köşe için sağ mesafe */
   background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* İkonu dikey olarak ortalar */
+  justify-content: center; /* İkonu yatay olarak ortalar */
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
+  margin-left: 10px; /* Gerekirse input'tan uzaklaştırır */
 }
 
 .about-btn:hover {
@@ -98,7 +97,6 @@ body {
   width: 24px;
   height: 24px;
 }
-
 
 .suggestion-item {
   padding: 10px;
@@ -121,10 +119,9 @@ body {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   color: white; /* Metin rengi beyaz */
-  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5); /* Siyah g_lge */
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5); /* Siyah gölge */
   font-family: 'Lato', sans-serif;
-  font-weight: 400; /* Light a__rl_k */
+  font-weight: 400; /* Light ağırlık */
   letter-spacing: -1px;
-
 }
 

@@ -6,7 +6,6 @@ const CitySelector = ({ onCitySelect }) => {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    // Şehir listesini JSON dosyasından yükle
     const loadCities = async () => {
       try {
         const response = await fetch("/assets/city.list.json");
@@ -29,7 +28,7 @@ const CitySelector = ({ onCitySelect }) => {
         .filter((city) =>
           city.name.toLowerCase().includes(term.toLowerCase())
         )
-        .slice(0, 10); // Maksimum 10 öneri
+        .slice(0, 10);
       setSuggestions(filteredCities);
     } else {
       setSuggestions([]);
@@ -44,26 +43,25 @@ const CitySelector = ({ onCitySelect }) => {
 
   return (
     <div className="city-selector">
-      <input
-        type="text"
-        placeholder="Şehir ara..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-        className="form-control"
-      />
+      <div className="input-wrapper">
+        <input
+          type="text"
+          placeholder="Şehir ara..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="form-control"
+        />
+      </div>
       {suggestions.length > 0 && (
         <ul className="suggestions-list">
           {suggestions.map((city, index) => (
-<li
-  key={index}
-  onClick={() => handleSuggestionClick(city)}
-  className="suggestion-item"
-  onMouseEnter={(e) => e.target.classList.add("highlight")}
-  onMouseLeave={(e) => e.target.classList.remove("highlight")}
->
-  {city.name}, {city.country}
-</li>
-
+            <li
+              key={index}
+              onClick={() => handleSuggestionClick(city)}
+              className="suggestion-item"
+            >
+              {city.name}, {city.country}
+            </li>
           ))}
         </ul>
       )}
