@@ -111,17 +111,4 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-  margin-left: 10px;
-}
-
-.about-btn:hover {
-  transform: scale(1.1);
-}
-
-.about-btn svg {
-  fill: white;
-  width: 24px;
-  height: 24px;
-}
+  box-shadow:
