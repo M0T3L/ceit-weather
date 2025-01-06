@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Yatay kaydırmayı engelle */
+  overflow: hidden;
 }
 
 .app {
@@ -20,7 +20,7 @@ html, body {
 }
 
 .city-info h1 {
-  font-size: 5vw; /* Dinamik font boyutu */
+  font-size: 5vw;
   margin: 0;
   color: white;
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5);
@@ -29,7 +29,7 @@ html, body {
 }
 
 .city-info p {
-  font-size: 3vw; /* Dinamik font boyutu */
+  font-size: 3vw;
   margin: 5px 0 0;
   color: white;
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5);
@@ -42,7 +42,7 @@ html, body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%; /* Daha geniş ekranlara uyum */
+  width: 80%;
   min-height: 100px;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -141,8 +141,8 @@ html, body {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  width: 80%; /* Daha geniş ekranlar için */
-  max-width: 500px; /* Maksimum genişlik */
+  width: 80%;
+  max-width: 500px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
 }
@@ -166,7 +166,6 @@ html, body {
   background-color: #0056b3;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
   .city-info h1 {
     font-size: 10vw;
@@ -177,7 +176,7 @@ html, body {
   }
 
   .city-info {
-    width: 90%; /* Daha geniş ekranlarda %50, mobilde %90 */
+    width: 90%;
     padding: 15px;
   }
 
