@@ -1,16 +1,13 @@
-html *
-{
+html, body {
   font-family: 'Lato', sans-serif;
-}
-
-body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden; /* Yatay kaydırmayı engelle */
 }
 
 .app {
   height: 100vh;
-  width: 100%;
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -23,7 +20,7 @@ body {
 }
 
 .city-info h1 {
-  font-size: 96px;
+  font-size: 5vw; /* Dinamik font boyutu */
   margin: 0;
   color: white;
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5);
@@ -32,7 +29,7 @@ body {
 }
 
 .city-info p {
-  font-size: 36px;
+  font-size: 3vw; /* Dinamik font boyutu */
   margin: 5px 0 0;
   color: white;
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.5);
@@ -45,11 +42,11 @@ body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50%;
-  min-height: 200px;
+  width: 80%; /* Daha geniş ekranlara uyum */
+  min-height: 100px;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
-  padding: 30px 20px;
+  padding: 20px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -75,7 +72,6 @@ body {
 }
 
 .form-control {
-  width: 100%;
   padding: 10px 40px 10px 10px;
   font-size: 16px;
   border: none;
@@ -145,13 +141,15 @@ body {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  width: 400px;
+  width: 80%; /* Daha geniş ekranlar için */
+  max-width: 500px; /* Maksimum genişlik */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
 }
 
 .about-content h2 {
   margin-top: 0;
+  font-family: 'Lato', sans-serif;
 }
 
 .about-content button {
@@ -166,4 +164,72 @@ body {
 
 .about-content button:hover {
   background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .city-info h1 {
+    font-size: 10vw;
+  }
+
+  .city-info p {
+    font-size: 5vw;
+  }
+
+  .city-info {
+    width: 90%; /* Daha geniş ekranlarda %50, mobilde %90 */
+    padding: 15px;
+  }
+
+  .about-btn {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .about-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-content {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .city-info h1 {
+    font-size: 12vw;
+  }
+
+  .city-info p {
+    font-size: 6vw;
+  }
+
+  .search-bar {
+    padding: 10px;
+  }
+
+  .form-control {
+    font-size: 14px;
+  }
+
+  .about-btn {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .about-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-content {
+    width: 90%;
+    max-width: 350px;
+  }
 }
