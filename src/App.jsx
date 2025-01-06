@@ -70,7 +70,7 @@ const App = () => {
             <p>Rüzgar Hızı: {weatherData.windSpeed} m/s</p>
           </>
         ) : (
-          <h1>Şehir Seçin</h1>
+          <h1>Weather App</h1>
         )}
       </div>
       <div className="search-bar">
@@ -94,8 +94,7 @@ const App = () => {
           <div className="about-content">
             <h2>Hakkında</h2>
             <p>
-              Bu uygulama OpenWeatherMap API'sini kullanarak gerçek zamanlı hava
-              durumu bilgisi sunar.
+              Geliştirici & Tasarımcı: Yavuz Burak Kutluca
             </p>
             <button onClick={() => setShowAbout(false)}>Kapat</button>
           </div>

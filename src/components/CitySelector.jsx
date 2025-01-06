@@ -5,15 +5,14 @@ const CitySelector = ({ onCitySelect }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Şehir arama fonksiyonu
   const handleSearchChange = async (e) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    if (term.length > 2) { // Arama terimi en az 3 karakter olmalı
+    if (term.length > 2) {
       setLoading(true);
       try {
-        const API_KEY = import.meta.env.VITE_API_KEY; // .env dosyasındaki API_KEY
+        const API_KEY = import.meta.env.VITE_API_KEY;
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/find?q=${term}&type=like&sort=population&cnt=10&appid=${API_KEY}`
         );
@@ -21,7 +20,7 @@ const CitySelector = ({ onCitySelect }) => {
         const data = await response.json();
         
         if (data.list) {
-          setSuggestions(data.list); // API'den gelen şehirleri öneri olarak göster
+          setSuggestions(data.list);
         }
       } catch (error) {
         console.error("Şehir verileri yüklenemedi:", error);
@@ -33,11 +32,10 @@ const CitySelector = ({ onCitySelect }) => {
     }
   };
 
-  // Öneri üzerine tıklanıldığında şehir seçme
   const handleSuggestionClick = (city) => {
-    setSearchTerm(city.name); // Şehri inputa yaz
-    setSuggestions([]); // Öneri listesini sıfırla
-    onCitySelect(city); // Seçilen şehri üst bileşene ilet
+    setSearchTerm(city.name);
+    setSuggestions([]);
+    onCitySelect(city);
   };
 
   return (
