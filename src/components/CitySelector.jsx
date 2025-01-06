@@ -3,42 +3,41 @@ import React, { useState, useEffect } from "react";
 const CitySelector = ({ onCitySelect }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [cities, setCities] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const loadCities = async () => {
-      try {
-        const response = await fetch("/assets/city.list.json");
-        const data = await response.json();
-        setCities(data);
-      } catch (error) {
-        console.error("Şehir verileri yüklenemedi:", error);
-      }
-    };
-
-    loadCities();
-  }, []);
-
-  const handleSearchChange = (e) => {
+  // Şehir arama fonksiyonu
+  const handleSearchChange = async (e) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    if (term.length > 2) {
-      const filteredCities = cities
-        .filter((city) =>
-          city.name.toLowerCase().includes(term.toLowerCase())
-        )
-        .slice(0, 10);
-      setSuggestions(filteredCities);
+    if (term.length > 2) { // Arama terimi en az 3 karakter olmalı
+      setLoading(true);
+      try {
+        const API_KEY = import.meta.env.VITE_API_KEY; // .env dosyasındaki API_KEY
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/find?q=${term}&type=like&sort=population&cnt=10&appid=${API_KEY}`
+        );
+
+        const data = await response.json();
+        
+        if (data.list) {
+          setSuggestions(data.list); // API'den gelen şehirleri öneri olarak göster
+        }
+      } catch (error) {
+        console.error("Şehir verileri yüklenemedi:", error);
+      } finally {
+        setLoading(false);
+      }
     } else {
       setSuggestions([]);
     }
   };
 
+  // Öneri üzerine tıklanıldığında şehir seçme
   const handleSuggestionClick = (city) => {
-    setSearchTerm(city.name);
-    setSuggestions([]);
-    onCitySelect(city);
+    setSearchTerm(city.name); // Şehri inputa yaz
+    setSuggestions([]); // Öneri listesini sıfırla
+    onCitySelect(city); // Seçilen şehri üst bileşene ilet
   };
 
   return (
@@ -52,6 +51,7 @@ const CitySelector = ({ onCitySelect }) => {
           className="form-control"
         />
       </div>
+      {loading && <p>Yükleniyor...</p>}
       {suggestions.length > 0 && (
         <ul className="suggestions-list">
           {suggestions.map((city, index) => (
@@ -60,7 +60,7 @@ const CitySelector = ({ onCitySelect }) => {
               onClick={() => handleSuggestionClick(city)}
               className="suggestion-item"
             >
-              {city.name}, {city.country}
+              {city.name}, {city.sys.country}
             </li>
           ))}
         </ul>
@@ -70,4 +70,3 @@ const CitySelector = ({ onCitySelect }) => {
 };
 
 export default CitySelector;
-
